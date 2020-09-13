@@ -131,10 +131,9 @@ function displayMenuButtons() {
         .join("");
 
     btnContainer.innerHTML = categoryBtns;
-    const filterBtns = btnContainer.querySelectorAll(".filter-btn");
-    console.log(filterBtns);
+    const filterButtons = btnContainer.querySelectorAll(".filter-btn");
 
-    filterBtns.forEach(function (btn) {
+    filterButtons.forEach(function (btn) {
         btn.addEventListener("click", function (e) {
             const category = e.currentTarget.dataset.id;
             const menuCategory = menu.filter(function (menuItem) {
@@ -142,9 +141,12 @@ function displayMenuButtons() {
                     return menuItem;
                 }
             });
+            //if category is all display all
             if (category === "all") {
                 displayMenuItems(menu);
-            } else {
+            }
+            //else display according to category
+            else {
                 displayMenuItems(menuCategory);
             }
         });
